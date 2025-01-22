@@ -2,14 +2,14 @@ package com.kh.busan.api.model.service;
 
 import java.util.List;
 
-import com.kh.busan.api.model.vo.CommtentDTO;
+import com.kh.busan.api.model.vo.CommentDTO;
 
 public interface BusanService {
 String getBusan(int page);
 	
 	String getBusanDetail(int pk);
 	
-	void save(CommtentDTO comment);
+	void save(CommentDTO comment);
 	
-	List<CommtentDTO> getComment(Long foodNo);
+	List<CommentDTO> getComment(Long foodNo);
 }

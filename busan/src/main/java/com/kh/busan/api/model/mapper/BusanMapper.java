@@ -5,13 +5,13 @@ import java.util.List;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 
-import com.kh.busan.api.model.vo.CommtentDTO;
+import com.kh.busan.api.model.vo.CommentDTO;
 
 @Mapper
 public interface BusanMapper {
 
 	@Insert("INSERT INTO TB_FOOD_REPLY VALUES(#{writer}, #{content}, #{foodNo})")
-	void save(CommtentDTO comment);
+	void save(CommentDTO comment);
 	
-	List<CommtentDTO> getComment(Long foodNo);
+	List<CommentDTO> getComment(Long foodNo);
 }

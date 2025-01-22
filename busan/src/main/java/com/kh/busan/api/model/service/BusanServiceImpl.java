@@ -10,14 +10,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.kh.busan.api.model.mapper.BusanMapper;
-import com.kh.busan.api.model.vo.CommtentDTO;
+import com.kh.busan.api.model.vo.CommentDTO;
 
 import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
 public class BusanServiceImpl implements BusanService {
-	private BusanMapper cm;
+	private final BusanMapper cm;
 
 	@Override
 	public String getBusan(int page) {
@@ -63,14 +63,13 @@ public class BusanServiceImpl implements BusanService {
 	}
 
 	@Override
-	public void save(CommtentDTO comment) {
-		
+	public void save(CommentDTO comment) {
 		cm.save(comment);
 		
 	}
 
 	@Override
-	public List<CommtentDTO> getComment(Long foodNo) {
+	public List<CommentDTO> getComment(Long foodNo) {
 		return cm.getComment(foodNo);
 	}
 
