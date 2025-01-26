@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.kh.secom.auth.util.JwtUtil;
 import com.kh.secom.member.model.vo.CustomUserDetails;
 import com.kh.secom.member.model.vo.MemberDTO;
+import com.kh.secom.token.model.service.TokenService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -21,7 +22,8 @@ import lombok.extern.slf4j.Slf4j;
 public class AuthenticationServiceImpl implements AuthenticationService {
 
 	private final AuthenticationManager am;
-	private final JwtUtil jwt;
+	//private final JwtUtil jwt;
+	private final TokenService ts;
 	
 	@Override
 	public Map<String, String> login(MemberDTO requestMember) {
@@ -41,10 +43,9 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 		
 		CustomUserDetails user = (CustomUserDetails)authentication.getPrincipal();
 		log.info("{}", user);
-		String accessToken = jwt.getAccessToken(user.getUsername());
-		log.info("{}", accessToken);
 		
-		return null;
+		Map<String, String> tokens = ts.generateToken(user.getUsername(), user.getUserNo());
+		return tokens;
 	
 	}
 
